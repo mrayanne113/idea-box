@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif; 
+}
+
+/* general */
+header {
+  background-color: #E5F3F2;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  padding: 20px;
+  color: #00A79D;
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+}
+
+button {
+  outline: none;
+}
+
+/* classes */ 
+.h1-style {
+  color: #6D6E71;
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+}
+
+.input {
+  font-size: 1.5rem;
+  display: block;
+  width: 50%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border: 2px solid #C1C2C4;
+  line-height: 36px;
+}
+
+.input::placeholder {
+  color: #C1C2C4;
+}
+
+.body-input {
+  height: 36px;
+
+}
+
+.bottom-section{
+  width: 100%;
+} 
+
+.search-input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 519px;
+}
+
+
+.user-card {
+  width: 50%;
+  max-width: 519px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid #D1D3D4;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.user-idea-title {
+  color: #6D6E71;
+  margin-bottom: 10px;
+}
+
+.user-idea-body {
+  color: #939598;
+  margin-bottom: 10px;
+}
+
+.quailty {
+  color: #939598;
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: super;
+  margin-bottom: 17px;
+}
+
+.quailty-placeholder {
+  color: #6D6E71;
+  display: inline-block;
+}
+
+/* buttons */
+.save-idea-bttn {
+  width: 51.5%;
+  max-width: 515px;
+  background-color: #00A79D;
+  color: #FFFFFF;
+  font-size: 2rem;
+  margin-bottom: 25px; 
+  padding-bottom: 2px;
+}
+
+.delete-bttn {
+  background-image: url(images/delete.svg);
+  top: 2px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+}
+
+.upvote-bttn {
+  background-image: url(images/upvote.svg);
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+
+.downvote-bttn {
+  background-image: url(images/downvote.svg);
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: none;
+}
+
+
+/* hovers */
+.save-idea-bttn:hover {
+  background-color: #045E55;
+}
+
+.delete-bttn:hover {
+  background-image: url(images/delete-hover.svg);
+}
+
+.upvote-bttn:hover {
+  background-image: url(images/upvote-hover.svg);
+}
+
+.downvote-bttn:hover {
+  background-image: url(images/downvote-hover.svg);
+}
+
+/* media */

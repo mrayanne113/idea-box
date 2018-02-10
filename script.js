@@ -70,7 +70,6 @@ function getIdeaFromStorage() {
     var quality = parseObject.quality;
     var newIdea = new Idea(title, body, newId, quality);
     newIdea.createIdea();
-    // createNewIdea(newIdea)
   }
 }
 
@@ -94,13 +93,19 @@ function deleteIdea() {
 
 // upvote bttn
 function ideaUpVote() {
-  console.log('hi')
-  // var parentCard = this.closest('article').id;
-  if ($('.quality-placeholder').text() === 'swill') {
+  var parentCard = this.closest('article').id;
+  var retrievedCard = localStorage.getItem(parentCard);
+  var parseCard = JSON.parse(retrievedCard);
+  if (parseCard.quality === qualityArray[0]) {
+    parseCard.quality = qualityArray[1];
     $('.quality-placeholder').text(qualityArray[1]);
-  }  else if ($('.quality-placeholder').text() === 'plausible') {
+  }  else if (parseCard.quality === qualityArray[1]) {
+    parseCard.quality = qualityArray[2]
     $('.quality-placeholder').text(qualityArray[2]);
   }
+  var help = JSON.stringify(parseCard);
+  localStorage.setItem(parentCard, help)
+  console.log(parseCard.quality, help);
 }
 
 // downvote bttn

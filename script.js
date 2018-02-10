@@ -8,14 +8,17 @@ var qualityArray = ['swill', 'plausible', 'genius'];
 
 // event listeners
 $saveBttn.on('click', makeIdea);
+$search.on('keyup', searchIdeas);
 $ideaSection.on('click', '.delete-bttn', deleteIdea);
 $ideaSection.on('click', '.upvote-bttn', ideaUpVote);
 $ideaSection.on('click', '.downvote-bttn', ideaDownVote);
-$search.on('keyup', searchIdeas);
+// $ideaSection.on('blur', '.user-idea-title', saveEditedIdea);
+// $ideaSection.on('blur', '.user-idea-body', saveEditedIdea);
+
 
 
 // on page load
-// getIdeaFromStorage();
+$(window).on('load', getIdeaFromStorage)
 
 
 function makeIdea(e) {
@@ -50,44 +53,49 @@ function clearFields() {
   $body.val('');
 }
 
-// json to storage
+// json.stringify to storage
 function addIdeaToStorage(object) {
   var stringifyObj = JSON.stringify(object);
   localStorage.setItem(object.newId, stringifyObj);
 }
 
-// json from storage
+// json.parse from storage
 function getIdeaFromStorage() {
   for(i = 0; i < localStorage.length; i++) {
     var getObject = localStorage.getItem(localStorage.key(i));
     var parseObject = JSON.parse(getObject);
-    var newIdea = new Idea(parseObject.title, parseObject.body, parseObject.newId, parseObject.qualityArray);
-    createNewIdea(parseObject);
+    var newId = parseObject.newId;
+    var title = parseObject.title;
+    var body = parseObject.body;
+    var quality = parseObject.quality;
+    var newIdea = new Idea(title, body, newId, quality);
+    newIdea.createIdea();
+    // createNewIdea(newIdea)
   }
 }
 
-function createNewIdea(object) {
-  $ideaSection.prepend(` <article class="user-idea" id="${this.newId}">
-        <h2 class="user-idea-title" contenteditable="true">${this.$title}</h2>
-        <button class="delete-bttn"></button>
-        <p class="user-idea-body" contenteditable="true">${this.$body}</p>
-        <button class="upvote-bttn"></button>
-        <button class="downvote-bttn"></button>
-        <p class="quality">quality: <span class="quality-placeholder">${qualityArray[this.quailty]}</span></p>
-      </article>`);
-}
+// function createNewIdea(newIdea) {
+//   $ideaSection.prepend(` <article class="user-idea" id="${newIdea.newId}">
+//         <h2 class="user-idea-title" contenteditable="true">${newIdea.title}</h2>
+//         <button class="delete-bttn"></button>
+//         <p class="user-idea-body" contenteditable="true">${newIdea.body}</p>
+//         <button class="upvote-bttn"></button>
+//         <button class="downvote-bttn"></button>
+//         <p class="quality">quality: <span class="quality-placeholder">${qualityArray[newIdea.quality]}</span></p>
+//       </article>`);
+// }
 
 // delete bttn and stroage
 function deleteIdea() {
   var card = this.closest('article').id;
-  console.log(card)
   this.closest('article').remove();
   localStorage.removeItem(card);
 }
 
 // upvote bttn
 function ideaUpVote() {
-  var parentCard = this.closest('article').id;
+  console.log('hi')
+  // var parentCard = this.closest('article').id;
   if ($('.quality-placeholder').text() === 'swill') {
     $('.quality-placeholder').text(qualityArray[1]);
   }  else if ($('.quality-placeholder').text() === 'plausible') {
@@ -97,19 +105,24 @@ function ideaUpVote() {
 
 // downvote bttn
 function ideaDownVote() {
-  var parentCard = this.closest('article');
-  var pulledCard = JSON.parse(localStorage.getItem(parentCard.id));
+  // var parentCard = this.closest('article');
+  // var pulledCard = JSON.parse(localStorage.getItem(parentCard.id));
   // console.log(pulledCard.quality)
   if ($('.quality-placeholder').text() === 'genius') {
-
+    $('.quality-placeholder').text(qualityArray[1]);
     // localStorage.setItem(parentCard.qualityArray)
   }  else if ($('.quality-placeholder').text() === 'plausible') {
     $('.quality-placeholder').text(qualityArray[0]);
-    console.log(pulledCard.quality)
+    // console.log(pulledCard.quality)
   }
 }
 
 // edit idea to storage
+function saveEditedTitle() {
+  
+  addIdeaToStorage(newIdea);
+}
+
 
 // filter idea
 function searchIdeas() {

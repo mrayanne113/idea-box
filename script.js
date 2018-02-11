@@ -125,7 +125,7 @@ function searchIdeas() {
   var filtered = $(this).val();
   for (var i = 0; i < ($ideaTitle.length); i++) {
     $($ideaTitle[i]).parent('article').hide();
-   if ($($ideaTitle[i]).text().includes(filtered) || $($ideaBody[i]).text().includes(filtered)) {
+   if ($($ideaTitle[i]).text().toUpperCase().includes(filtered.toUpperCase()) || $($ideaBody[i]).text().toUpperCase().includes(filtered.toUpperCase())) {
     $($ideaTitle[i]).parent('article').show();
    } 
   }

@@ -13,7 +13,7 @@ $ideaSection.on('click', '.delete-bttn', deleteIdea);
 $ideaSection.on('click', '.upvote-bttn', ideaUpVote);
 $ideaSection.on('click', '.downvote-bttn', ideaDownVote);
 $ideaSection.on('blur', '.user-idea-title', saveEditedTitle);
-// $ideaSection.on('blur', '.user-idea-body', saveEditedIdea);
+$ideaSection.on('blur', '.user-idea-body', saveEditedBody);
 
 // on page load
 $(document).ready(getIdeaFromStorage)
@@ -65,7 +65,6 @@ function getIdeaFromStorage() {
     var title = parseObject.title;
     var body = parseObject.body;
     var quality = parseObject.quality;
-    console.log('quality: ', quality)
     var newIdea = new Idea(title, body, newId, quality);
     newIdea.createIdea();
   }
@@ -79,6 +78,7 @@ function deleteIdea() {
 }
 
 function ideaUpVote() {
+  console.log('up')
   var key = $(this).closest('article').attr('id');
   var obj = localStorage.getItem(key);
   var idea = JSON.parse(obj);
@@ -94,11 +94,13 @@ function ideaUpVote() {
 }
 
 function ideaDownVote() {
+  console.log('down')
   var key = $(this).closest('article').attr('id');
   var obj = localStorage.getItem(key);
   var idea = JSON.parse(obj);
   if ($('.quality-placeholder').text() === 'genius') {
     idea.quality = 'plausible';
+
     $('.quality-placeholder').text('plausible');
   }  else if ($('.quality-placeholder').text() === 'plausible') {
     idea.quality = 'genius';
@@ -110,26 +112,23 @@ function ideaDownVote() {
 
 // edit idea to storage
 function saveEditedTitle() {
-  var ideaId = this.closest('article').id;
-  var ideaBody = $(this).closest('user-idea-body').text();
-  console.log('ideaBody: ', ideaBody)
-  console.log('ideaId ', ideaId)
-  var newTitle = $(this).closest('.user-idea-title').text();
-  console.log('newTitle ', newTitle)
-  var getIdea = localStorage.getItem(ideaId);
-  var parsedIdea = JSON.parse(getIdea);
-  // var parsedBody = JSON.parse(ideaBody);
-  console.log('parsedIdea: ', parsedIdea)
-  parsedIdea.title = newTitle;
-  parsedIdea.body = ideaBody;
-  console.log(parsedIdea.body)
-  var passedIdea = new Idea()
-  console.log('passedIdea: ', passedIdea)
+  console.log($(this).closest('article'))
+  var key = $(this).closest('article').attr('id');
+  var obj = localStorage.getItem(key);
+  var idea = JSON.parse(obj);
+  idea.title = $(this).text();
+  console.log('idea.title ', idea.title)
+  var ideaString = JSON.stringify(idea)
+  localStorage.setItem(key, ideaString)
+}
 
-  // var stringIdea = JSON.stringify(parsedIdea.title)
-
-  // localStorage.setItem(ideaId, stringIdea)
-  // console.log(localStorage.setItem(ideaId, stringIdea))
+function saveEditedBody() {
+  var key = $(this).closest('article').attr('id');
+  var obj = localStorage.getItem(key);
+  var ideas = JSON.parse(obj);
+  ideas.body = $(this).text();
+  var ideaString = JSON.stringify(ideas)
+  localStorage.setItem(key, ideaString)
 }
 
 // filter idea

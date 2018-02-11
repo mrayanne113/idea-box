@@ -4,9 +4,6 @@ var $title = $('.title-input');
 var $body = $('.body-input');
 var $search = $('.search-input');
 
-// var qualityArray = ['swill', 'plausible', 'genius'];
-
-// event listeners
 $saveBttn.on('click', makeIdea);
 $search.on('keyup', searchIdeas);
 $ideaSection.on('click', '.delete-bttn', deleteIdea);
@@ -15,7 +12,6 @@ $ideaSection.on('click', '.downvote-bttn', ideaDownVote);
 $ideaSection.on('blur', '.user-idea-title', saveEditedTitle);
 $ideaSection.on('blur', '.user-idea-body', saveEditedBody);
 
-// on page load
 $(document).ready(getIdeaFromStorage)
 
 function makeIdea(e) {
@@ -26,7 +22,7 @@ function makeIdea(e) {
   clearFields();
   $title.focus();
 }
-// Makeidea prepend time title body quailty 
+
 function Idea(title, body, newId, quality) {
   this.newId = newId || $.now();
   this.title = title;
@@ -50,13 +46,11 @@ function clearFields() {
   $body.val('');
 }
 
-// json.stringify to storage
 function addIdeaToStorage(object) {
   var stringifyObj = JSON.stringify(object);
   localStorage.setItem(object.newId, stringifyObj);
 }
 
-// json.parse from storage
 function getIdeaFromStorage() {
   for(i = 0; i < localStorage.length; i++) {
     var getObject = localStorage.getItem(localStorage.key(i));
@@ -70,7 +64,6 @@ function getIdeaFromStorage() {
   }
 }
 
-// delete bttn and stroage
 function deleteIdea() {
   var card = this.closest('article').id;
   this.closest('article').remove();
@@ -78,46 +71,41 @@ function deleteIdea() {
 }
 
 function ideaUpVote() {
-  console.log('up')
-  var key = $(this).closest('article').attr('id');
-  var obj = localStorage.getItem(key);
-  var idea = JSON.parse(obj);
-  if ($('.quality-placeholder').text() === 'swill') {
+  let key = $(this).closest('article').attr('id');
+  let obj = localStorage.getItem(key);
+  let idea = JSON.parse(obj);
+  if (idea.quality === 'swill') {
     idea.quality = 'plausible';
-    $('.quality-placeholder').text('plausible');
-  }  else if ($('.quality-placeholder').text() === 'plausible') {
+    $(this).siblings('p').children('.quality-placeholder').text('plausible')
+  } else {
     idea.quality = 'genius';
-    $('.quality-placeholder').text('genius');
+    $(this).siblings('p').children('.quality-placeholder').text('genius')
+
   }
-  var ideaString = JSON.stringify(idea)
+  let ideaString = JSON.stringify(idea)
   localStorage.setItem(key, ideaString)
 }
 
 function ideaDownVote() {
-  console.log('down')
   var key = $(this).closest('article').attr('id');
   var obj = localStorage.getItem(key);
   var idea = JSON.parse(obj);
-  if ($('.quality-placeholder').text() === 'genius') {
+  if (idea.quality === 'genius') {
     idea.quality = 'plausible';
-
-    $('.quality-placeholder').text('plausible');
-  }  else if ($('.quality-placeholder').text() === 'plausible') {
-    idea.quality = 'genius';
-    $('.quality-placeholder').text('swill');
+    $(this).siblings('p').children('.quality-placeholder').text('plausible');
+  }  else  {
+    idea.quality = 'swill';
+    $(this).siblings('p').children('.quality-placeholder').text('swill');
   }
   var ideaString = JSON.stringify(idea)
   localStorage.setItem(key, ideaString)
 }
 
-// edit idea to storage
 function saveEditedTitle() {
-  console.log($(this).closest('article'))
   var key = $(this).closest('article').attr('id');
   var obj = localStorage.getItem(key);
   var idea = JSON.parse(obj);
   idea.title = $(this).text();
-  console.log('idea.title ', idea.title)
   var ideaString = JSON.stringify(idea)
   localStorage.setItem(key, ideaString)
 }
@@ -131,7 +119,6 @@ function saveEditedBody() {
   localStorage.setItem(key, ideaString)
 }
 
-// filter idea
 function searchIdeas() {
   var $ideaTitle = $('.user-idea-title');
   var $ideaBody = $('.user-idea-body');
@@ -144,4 +131,7 @@ function searchIdeas() {
   }
 }
 
-//  sorting
+function sortIdea() {
+
+}
+

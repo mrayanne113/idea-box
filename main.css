@@ -113,7 +113,16 @@ button {
   font-size: 1rem;
   background-color: #00A79D;
   color: #FFFFFF;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.show-all-bttn {
+  display: block;
+  max-width: 515px;
+  width: 51.5%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 25px;
 }
 
 .delete-bttn {
@@ -187,15 +196,16 @@ button {
     max-width: 728px;
   }
 
-  .save-idea-bttn {
-    width: 66%;
-    max-width: 742px;
-  }
-
   .quality-bttn {
     width: 21.4%;
     max-width: 241px;
     font-size: 1.5rem;
+  }
+
+  .save-idea-bttn,
+  .show-all-bttn {
+    width: 66%;
+    max-width: 742px;
   }
   
   .user-idea {
@@ -224,12 +234,16 @@ button {
     width: 80%;
   }
 
+  .search-input {
+    width: 82%;
+  }
+
   .save-idea-bttn {
     width: 83%;
   }
 
   .quality-bttn {
-    width: 26%;
+    width: 26.8%;
   }
 
   .body-input {
@@ -238,6 +252,10 @@ button {
   
   .user-idea {
     width: 78%;
+  }
+
+  .show-all-bttn {
+    width: 82%;
   }
 }
 

@@ -137,10 +137,10 @@ function saveEditedBody() {
 function searchIdeas() {
   var $ideaTitle = $('.user-idea-title');
   var $ideaBody = $('.user-idea-body');
-  var filtered = $(this).val();
+  var filtered = $(this).val().toUpperCase();
   for (var i = 0; i < ($ideaTitle.length); i++) {
     $($ideaTitle[i]).parent('article').hide();
-   if ($($ideaTitle[i]).text().toUpperCase().includes(filtered.toUpperCase()) || $($ideaBody[i]).text().toUpperCase().includes(filtered.toUpperCase())) {
+   if ($($ideaTitle[i]).text().toUpperCase().includes(filtered) || $($ideaBody[i]).text().toUpperCase().includes(filtered)) {
     $($ideaTitle[i]).parent('article').show();
    } 
   }

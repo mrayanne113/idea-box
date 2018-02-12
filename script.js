@@ -46,11 +46,11 @@ function Idea(title, body, newId, quality) {
 
 Idea.prototype.createIdea = function () {
   $ideaSection.prepend(`<article class="user-idea" id="${this.newId}">
-        <h2 class="user-idea-title" contenteditable="true">${this.title}</h2>
-        <button class="delete-bttn"></button>
-        <p class="user-idea-body" contenteditable="true">${this.body}</p>
-        <button class="upvote-bttn"></button>
-        <button class="downvote-bttn"></button>
+        <h2 class="user-idea-title" aria-label="idea title" contenteditable="true">${this.title}</h2>
+        <button aria-label="delete your idea forever" class="delete-bttn"></button>
+        <p class="user-idea-body" aria-label="idea body" contenteditable="true">${this.body}</p>
+        <button aria-label="upvote your idea" class="upvote-bttn"></button>
+        <button aria-label="downvote your idea" class="downvote-bttn"></button>
         <p class="quality">quality: <span class="quality-placeholder">${this.quality}</span></p>
       </article>`);
 }
@@ -139,7 +139,8 @@ function searchIdeas() {
   var filtered = $(this).val();
   for (var i = 0; i < ($ideaTitle.length); i++) {
     $($ideaTitle[i]).parent('article').hide();
-   if ($($ideaTitle[i]).text().toUpperCase().includes(filtered.toUpperCase()) || $($ideaBody[i]).text().toUpperCase().includes(filtered.toUpperCase())) {
+   if ($($ideaTitle[i]).text().toUpperCase().includes(filtered.toUpperCase()) 
+    || $($ideaBody[i]).text().toUpperCase().includes(filtered.toUpperCase())) {
     $($ideaTitle[i]).parent('article').show();
    } 
   }
@@ -160,5 +161,3 @@ function showGenius(e) {
   console.log('genius')
 }
 
-
-nlkn

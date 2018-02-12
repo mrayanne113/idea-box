@@ -17,8 +17,7 @@ The id should be a unique identifier.
 title and body are free-form strings.
 quality should be one of the follow: “genius”, “plausible”, and “swill.”
 By default, the idea’s “quality” should default to the lowest setting (i.e. “swill”).
-# User Flows
-Viewing ideas
+
 # When visiting the application, the user should:
 
 See a list of all existing ideas, including the title, body, and quality for each idea.

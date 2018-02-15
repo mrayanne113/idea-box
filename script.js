@@ -1,42 +1,32 @@
-var $saveBttn = $('.save-idea-bttn');
-var $ideaSection = $('.ideas');
-var $title = $('.title-input');
-var $body = $('.body-input');
-var $search = $('.search-input');
-
-
-$title.on('input', enableSave);
-$body.on('input', enableSave);
-$saveBttn.on('click', makeIdea);
-$search.on('input', searchIdeas);
+$('.title-input').on('input', enableSave);
+$('.body-input').on('input', enableSave);$('.save-idea-bttn').on('click', makeIdea);
+$('.search-input').on('input', searchIdeas);
 $('.swill-bttn').on('click', showSwill);
 $('.plausible-bttn').on('click', showPlausible);
 $('.genius-bttn').on('click', showGenius);
 $('.show-all-bttn').on('click', showAllIdeas);
-$ideaSection.on('blur', '.user-idea-title', saveEditedTitle);
-$ideaSection.on('blur', '.user-idea-body', saveEditedBody);
-$ideaSection.on('click', '.delete-bttn', deleteIdea);
-$ideaSection.on('click', '.upvote-bttn', ideaUpVote);
-$ideaSection.on('click', '.downvote-bttn', ideaDownVote);
+$('.ideas').on('blur', '.user-idea-title', saveEditedTitle);
+$('.ideas').on('blur', '.user-idea-body', saveEditedBody);
+$('.ideas').on('click', '.delete-bttn', deleteIdea);
+$('.ideas').on('click', '.upvote-bttn', ideaUpVote);
+$('.ideas').on('click', '.downvote-bttn', ideaDownVote);
 
 $(document).ready(getIdeaFromStorage);
 
 function enableSave() {
-  if ($title.val() && $body.val()){
-   $saveBttn.removeAttr('disabled', false);
+  if ($('.title-input').val() && $('.body-input').val()){
+  $('.save-idea-bttn').removeAttr('disabled', false);
   } else {
-   $saveBttn.attr('disabled', true);
+  $('.save-idea-bttn').attr('disabled', true);
   }
 }
 
 function makeIdea(e) {
   e.preventDefault();
-  var newIdea = new Idea($title.val(), $body.val());
+  var newIdea = new Idea($('.title-input').val(), $('.body-input').val());
   newIdea.createIdea();
   addIdeaToStorage(newIdea);
   clearFields();
-  $title.focus();
-  $saveBttn.attr('disabled', true);
 }
 
 function Idea(title, body, newId, quality) {
@@ -47,7 +37,7 @@ function Idea(title, body, newId, quality) {
 } 
 
 Idea.prototype.createIdea = function () {
-  $ideaSection.prepend(
+  $('.ideas').prepend(
        `<article class="user-idea" id="${this.newId}">
         <h2 class="user-idea-title" aria-label="idea title" contenteditable="true">${this.title}</h2>
         <button aria-label="delete your idea forever" class="delete-bttn"></button>
@@ -59,8 +49,10 @@ Idea.prototype.createIdea = function () {
 }
 
 function clearFields() {
-  $title.val('');
-  $body.val('');
+  $('.title-input').val('');
+  $('.body-input').val('');
+  $('.title-input').focus();
+  $('.save-idea-bttn').attr('disabled', true);
 }
 
 function addIdeaToStorage(object) {
@@ -187,4 +179,3 @@ function showAllIdeas(e) {
     $(ideaQuality[i]).parent().parent('article').show();
   }
 }
-

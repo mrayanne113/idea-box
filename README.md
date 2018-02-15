@@ -57,6 +57,6 @@ As a user types in the search box, the list of ideas should filter in real time 
 Clearing the search box should restore all the ideas to the list.
 
 ![orignal](http://frontend.turing.io/assets/images/projects/ideabox/ideabox-01.png "")
-![orignal](http://frontend.turing.io/assets/images/projects/ideabox/ideabox-02.png "")
+![orignal](http://frontend.turing.io/assets/images/projects/ideabox/ideabox-03.png "")
 ![orignal](images/idea-box-desktop.png "")
 ![orignal](images/idea-box-mobile.png "")

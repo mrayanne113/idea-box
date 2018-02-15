@@ -179,3 +179,7 @@ function showAllIdeas(e) {
     $(ideaQuality[i]).parent().parent('article').show();
   }
 }
+
+
+
+

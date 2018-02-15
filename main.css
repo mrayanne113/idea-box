@@ -1,7 +1,8 @@
 * {
+  font-family: 'Open Sans', sans-serif; 
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif; 
+  outline-color: #00A79D;
 }
 
 /* general */
@@ -12,11 +13,11 @@ header {
 }
 
 h1 {
-  padding: 20px;
   color: #00A79D;
+  font-family: 'Roboto Slab', serif;
   font-size: 4rem;
   font-weight: 700;
-  font-family: 'Roboto Slab', serif;
+  padding: 20px;
 }
 
 button {
@@ -26,22 +27,22 @@ button {
 /* classes */ 
 .h1-style {
   color: #6D6E71;
+  font-family: 'Roboto Slab', serif;
   font-size: 4rem;
   font-weight: 700;
-  font-family: 'Roboto Slab', serif;
 }
 
 .input {
-  font-size: 1.5rem;
+  border: 2px solid #C1C2C4;
   display: block;
-  width: 50%;
-  max-width: 500px;
+  font-size: 1.5rem;
+  line-height: 36px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  max-width: 500px;
   padding-left: 10px;
-  border: 2px solid #C1C2C4;
-  line-height: 36px;
+  width: 50%;
 }
 
 
@@ -50,27 +51,27 @@ button {
 
 }
 
-.bottom-section{
-  width: 100%;
+.bottom-section {
   text-align: center;
+  width: 100%;
 } 
 
 .search-input {
-  margin-top: 20px;
   margin-bottom: 20px;
+  margin-top: 20px;
   max-width: 515px;
   width: 51.5%;
 }
 
 
 .user-idea {
-  width: 50%;
-  max-width: 519px;
+  border-bottom: 1px solid #D1D3D4;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  border-bottom: 1px solid #D1D3D4;
+  max-width: 519px;
   position: relative;
-  margin-bottom: 20px;
+  width: 50%;
 }
 
 .user-idea-title {
@@ -86,9 +87,9 @@ button {
 .quality {
   color: #939598;
   display: inline-block;
+  margin-bottom: 17px;
   margin-left: 20px;
   vertical-align: super;
-  margin-bottom: 17px;
 }
 
 .quality-placeholder {
@@ -98,59 +99,59 @@ button {
 
 /* buttons */
 .save-idea-bttn {
-  width: 51.5%;
-  max-width: 515px;
   background-color: #00A79D;
   color: #FFFFFF;
   font-size: 2rem;
   margin-bottom: 25px; 
+  max-width: 515px;
   padding-bottom: 2px;
+  width: 51.5%;
 }
 
 .quality-bttn {
-  width: 16.8%;
-  max-width: 169px;
-  font-size: 1rem;
   background-color: #00A79D;
   color: #FFFFFF;
+  font-size: 1rem;
   margin-bottom: 7px;
+  max-width: 169px;
+  width: 16.8%;
 }
 
 .show-all-bttn {
   display: block;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 515px;
   width: 51.5%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 25px;
 }
 
 .delete-bttn {
-  background-image: url(images/delete.svg);
-  top: 2px;
-  right: 4px;
-  width: 20px;
-  height: 20px;
-  border: none;
-  position: absolute;
   background-color: transparent;
+  background-image: url(images/delete.svg);
+  border: none;
+  height: 20px;
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  width: 20px;
 }
 
 .upvote-bttn {
-  background-image: url(images/upvote.svg);
-  width: 20px;
-  height: 20px;
-  border: none;
   background-color: transparent;
+  background-image: url(images/upvote.svg);
+  border: none;
+  height: 20px;
+  width: 20px;
 }
 
 .downvote-bttn {
-  background-image: url(images/downvote.svg);
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  border: none;
   background-color: transparent;
+  background-image: url(images/downvote.svg);
+  border: none;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
 }
 
 /*  pseudo-element */
@@ -161,6 +162,14 @@ button {
 
 .save-idea-bttn:disabled {
   background-color: #6D6E71;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+[contenteditable="true"]:focus {
+  outline-color: #00A79D;
+  outline-style: double;
 }
 
 /* hovers */
@@ -192,25 +201,25 @@ button {
   }
   
   .input {
-    width: 66%;
     max-width: 728px;
+    width: 66%;
   }
 
   .quality-bttn {
-    width: 21.4%;
-    max-width: 241px;
     font-size: 1.5rem;
+    max-width: 241px;
+    width: 21.4%;
   }
 
   .save-idea-bttn,
   .show-all-bttn {
-    width: 66%;
     max-width: 742px;
+    width: 66%;
   }
   
   .user-idea {
-    width: 64.2%;
     max-width: 725px;
+    width: 64.2%;
   }
 
   .user-idea-title {
@@ -224,7 +233,7 @@ button {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   h1,
   .h1-style {
     font-size: 2.5rem;

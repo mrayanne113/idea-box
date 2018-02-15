@@ -5,10 +5,10 @@ var $body = $('.body-input');
 var $search = $('.search-input');
 
 
-$title.on('keyup', enableSave);
-$body.on('keyup', enableSave);
+$title.on('input', enableSave);
+$body.on('input', enableSave);
 $saveBttn.on('click', makeIdea);
-$search.on('keyup', searchIdeas);
+$search.on('input', searchIdeas);
 $('.swill-bttn').on('click', showSwill);
 $('.plausible-bttn').on('click', showPlausible);
 $('.genius-bttn').on('click', showGenius);

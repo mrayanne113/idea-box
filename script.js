@@ -4,6 +4,7 @@ var $title = $('.title-input');
 var $body = $('.body-input');
 var $search = $('.search-input');
 
+
 $title.on('keyup', enableSave);
 $body.on('keyup', enableSave);
 $saveBttn.on('click', makeIdea);
@@ -22,9 +23,9 @@ $(document).ready(getIdeaFromStorage);
 
 function enableSave() {
   if ($title.val() && $body.val()){
-   $saveBttn.removeAttr('disabled', false)
+   $saveBttn.removeAttr('disabled', false);
   } else {
-   $saveBttn.attr('disabled', true)
+   $saveBttn.attr('disabled', true);
   }
 }
 
@@ -32,7 +33,7 @@ function makeIdea(e) {
   e.preventDefault();
   var newIdea = new Idea($title.val(), $body.val());
   newIdea.createIdea();
-  addIdeaToStorage(newIdea)
+  addIdeaToStorage(newIdea);
   clearFields();
   $title.focus();
   $saveBttn.attr('disabled', true);
@@ -46,7 +47,8 @@ function Idea(title, body, newId, quality) {
 } 
 
 Idea.prototype.createIdea = function () {
-  $ideaSection.prepend(`<article class="user-idea" id="${this.newId}">
+  $ideaSection.prepend(
+       `<article class="user-idea" id="${this.newId}">
         <h2 class="user-idea-title" aria-label="idea title" contenteditable="true">${this.title}</h2>
         <button aria-label="delete your idea forever" class="delete-bttn"></button>
         <p class="user-idea-body" aria-label="idea body" contenteditable="true">${this.body}</p>
@@ -91,14 +93,13 @@ function ideaUpVote() {
   var idea = JSON.parse(obj);
   if (idea.quality === 'swill') {
     idea.quality = 'plausible';
-    $(this).siblings('p').children('.quality-placeholder').text('plausible')
+    $(this).siblings('p').children('.quality-placeholder').text('plausible');
   } else {
     idea.quality = 'genius';
-    $(this).siblings('p').children('.quality-placeholder').text('genius')
-
+    $(this).siblings('p').children('.quality-placeholder').text('genius');
   }
-  var ideaString = JSON.stringify(idea)
-  localStorage.setItem(key, ideaString)
+  var ideaString = JSON.stringify(idea);
+  localStorage.setItem(key, ideaString);
 }
 
 function ideaDownVote() {
@@ -112,8 +113,8 @@ function ideaDownVote() {
     idea.quality = 'swill';
     $(this).siblings('p').children('.quality-placeholder').text('swill');
   }
-  var ideaString = JSON.stringify(idea)
-  localStorage.setItem(key, ideaString)
+  var ideaString = JSON.stringify(idea);
+  localStorage.setItem(key, ideaString);
 }
 
 function saveEditedTitle() {
@@ -121,8 +122,8 @@ function saveEditedTitle() {
   var obj = localStorage.getItem(key);
   var idea = JSON.parse(obj);
   idea.title = $(this).text();
-  var ideaString = JSON.stringify(idea)
-  localStorage.setItem(key, ideaString)
+  var ideaString = JSON.stringify(idea);
+  localStorage.setItem(key, ideaString);
 }
 
 function saveEditedBody() {
@@ -130,8 +131,8 @@ function saveEditedBody() {
   var obj = localStorage.getItem(key);
   var idea = JSON.parse(obj);
   idea.body = $(this).text();
-  var ideaString = JSON.stringify(idea)
-  localStorage.setItem(key, ideaString)
+  var ideaString = JSON.stringify(idea);
+  localStorage.setItem(key, ideaString);
 }
 
 function searchIdeas() {
@@ -186,6 +187,4 @@ function showAllIdeas(e) {
     $(ideaQuality[i]).parent().parent('article').show();
   }
 }
-
-
 

@@ -12,13 +12,13 @@
   </head>
   <body>
     <header role="banner" class="top-section">
-      <h1>idea<span class="h1-style">Box</span></h1>
+      <h1>idea<span class="h1-style">box</span></h1>
       <form role="form">
         <input class="input title-input" aria-label="enter idea title here" 
         type="text" name="idea-title" aria-required placeholder="Title">
         <textarea class="input body-input" aria-label="enter idea content here" 
         type="text" name="idea-body" aria-required placeholder="Body"></textarea>
-        <button aria-label="save your idea" class="save-idea-bttn" disabled="">save</button>
+        <button aria-label="save your idea" class="save-idea-bttn"  aria-disabled="true" disabled>save</button>
       </form>
     </header>
     <section role="main" class="bottom-section">
@@ -29,7 +29,7 @@
       <button class="genius-bttn quality-bttn" aria-label="show only genius ideas">genius</button>
       <button class="show-all-bttn quality-bttn" aria-label="show all your ideas">show all ideas</button>
     </section>
-    <section class="ideas">
+    <section class="ideas" aria-live="polite">
     </section>
   </section>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

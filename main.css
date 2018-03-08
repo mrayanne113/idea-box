@@ -154,7 +154,7 @@ button {
   width: 20px;
 }
 
-/*  pseudo-element */
+/*  pseudo */
 
 .input::placeholder {
   color: #C1C2C4;
@@ -267,8 +267,3 @@ textarea:focus,
     width: 82%;
   }
 }
-
-
-
-
-
